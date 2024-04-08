@@ -13,12 +13,13 @@ setTimeout(function () {
 	$loadingMessage.hide();
 }, 1500);
 
-$(document).ready(function() {
-  // Hide the loading message and show the screen content after 1.5 seconds
+$(document).ready(function() {  
   setTimeout(function() {
     $('#loadingH1').hide(); // Hide the loading message
-    $('.screen').fadeIn(); // Slowly fade in the screen content
-  }, 2000);
+    $('.screen').fadeIn(1000, function() {      
+      $(".terminal").typewriter();
+  }); // Slowly fade in the screen content
+  }, 2500);
 });
 
 var initDot = document.getElementById("loading");
@@ -85,6 +86,7 @@ $.fn.typewriter = function() {
       a = 0,
       d = 0;
     c.html("");
+    c.css('visibility', 'visible'); // Changing visibility to visible
     var e = function() {
       if ("<" == b.substring(a, a + 1)) {
         var f = new RegExp(/<span class="instant"/),
@@ -103,6 +105,6 @@ $.fn.typewriter = function() {
   });
   return this
 };
-$(".terminal").typewriter();
+// $(".terminal").typewriter();
 
 
