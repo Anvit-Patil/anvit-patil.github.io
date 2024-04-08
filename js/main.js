@@ -1,7 +1,10 @@
 const about = document.querySelector('#about')
 const contact = document.querySelector('#contact')
+const exp = document.querySelector('#exp')
+
 const aboutContent = document.querySelector('#about-content')
 const contactContent = document.querySelector('#contact-content')
+const expContent = document.querySelector('#exp-content')
 
 var $loadingMessage = $('#loadingH1');
 
@@ -57,6 +60,20 @@ contact.addEventListener('click', () => {
   })
 })
 
+exp.addEventListener('click', () => {
+  const expBox = new WinBox({
+    title: 'experience',
+    //modal: true,
+    width: '400px',
+    height: '400px',
+    top: 50,
+    right: 50,
+    bottom: 50,
+    left: 50,
+    mount: expContent,
+    background: "radial-gradient(#444, #111)"
+  })
+})
 
 // Typewriter.js
 // https://github.com/ronv/Typewriter.js
