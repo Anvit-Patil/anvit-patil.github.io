@@ -31,50 +31,34 @@ var loading = setInterval(function () {
 	}
 }, 350);
 
-about.addEventListener('click', () => {
-  const aboutBox = new WinBox({
-    title: 'About Me',
-    //modal: true,
-    width: '400px',
-    height: '400px',
-    top: 50,
-    right: 50,
-    bottom: 50,
-    left: 50,
-    mount: aboutContent,
-    background: "radial-gradient(#444, #111)"
-  })
-})
+const isMobile = window.innerWidth <= 768;
 
-contact.addEventListener('click', () => {
-  const contactBox = new WinBox({
-    title: 'Contact Me',
-    background: '#00aa00',
-    width: '400px',
-    height: '400px',
-    top: 150,
-    right: 50,
-    bottom: 50,
-    left: 250,
-    mount: contactContent,
-    background: "radial-gradient(#444, #111)"
-  })
-})
+function createWinBox(title, mountContent, additionalConfig) {
+    const baseConfig = {
+        title: title,
+        background: "radial-gradient(#444, #111)",
+        mount: mountContent,
+        width: isMobile ? '100%' : '400px',
+        height: isMobile ? '100%' : '400px',
+        top: 100,
+        right: 40,
+        bottom: 150,
+        left: 40
+    };
 
-exp.addEventListener('click', () => {
-  const expBox = new WinBox({
-    title: 'experience',
-    //modal: true,
-    width: '400px',
-    height: '400px',
-    top: 50,
-    right: 50,
-    bottom: 50,
-    left: 50,
-    mount: expContent,
-    background: "radial-gradient(#444, #111)"
-  })
-})
+    // Combine base config with any additional specific configuration
+    const config = {...baseConfig, ...additionalConfig};
+    const winBox = new WinBox(config);
+
+    // Automatically maximize if on mobile
+    if (isMobile) {
+        winBox.maximize();
+    }
+}
+
+about.addEventListener('click', () => createWinBox('About Me', aboutContent));
+contact.addEventListener('click', () => createWinBox('Contact Me', contactContent));
+exp.addEventListener('click', () => createWinBox('Experience', expContent));
 
 // Typewriter.js
 // https://github.com/ronv/Typewriter.js
