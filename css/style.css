@@ -58,6 +58,7 @@ p {
 }
 
 nav {
+  display: flex;
   width: 40%;
 }
 
