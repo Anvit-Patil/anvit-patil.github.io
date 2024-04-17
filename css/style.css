@@ -401,9 +401,13 @@ p:last-child:after {
 
 @media (max-width: 480px) {
   nav li {
-    font-size: 15px;
+    font-size: 14px;
     /* Even smaller font size on mobile phones */
     
+  }
+
+  .screen {
+    padding: 8vmin;
   }
 
   h1 {
